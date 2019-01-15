@@ -9,6 +9,7 @@ texts = bf.find_all('div',class_='listmain')
 a_bf = BeautifulSoup(str(texts[0]),'html.parser')
 a_texts = a_bf.find_all('a')
 self_nums = len(a_texts[13:])
+
 for each in a_texts[13:]:
     try:
         print(each.string, server + each.get('href'))
