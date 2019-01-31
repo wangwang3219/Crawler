@@ -5,6 +5,7 @@ import urllib.request
 def trans():
     content = input("请输入需要翻译的内容：")
     url = 'http://fanyi.youdao.com/translate?smartresult=dict&smartresult=rule'
+    # 创建data字典，存储上图的Form Data
     data = {}
     data['i'] = content
     data['from'] = 'AUTO'
