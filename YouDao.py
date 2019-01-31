@@ -18,11 +18,17 @@ def trans():
     data['keyfrom'] = 'fanyi.web'
     data['action'] = 'FY_BY_CLICKBUTTION'
     data['typoResult'] = 'true'
+    # 使用urlencode方法转换标准格式
     data = urllib.parse.urlencode(data).encode('utf-8')
+    # 传递Request对象和转换完格式的数据
     response = urllib.request.urlopen(url, data)
+    # 读取信息并解码
     html = response.read().decode('utf-8')
+    # 使用JSON
     html = json.loads(html)
+    # 找到翻译结果
     target = html['translateResult'][0][0]['tgt']
+    # 打印翻译信息
     print("翻译结果：%s" % target)
 
 trans()
