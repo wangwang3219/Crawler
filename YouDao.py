@@ -5,6 +5,9 @@ import urllib.request
 def trans():
     content = input("请输入需要翻译的内容：")
     url = 'http://fanyi.youdao.com/translate?smartresult=dict&smartresult=rule'
+    head = {}
+    head['Referer'] = 'http://fanyi.youdao.com/'
+    head['User-Agent'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.81 Safari/537.36'
     # 创建Form_Data字典，存储上图的Form Data
     Form_Data = {}
     Form_Data['i'] = content
@@ -22,7 +25,9 @@ def trans():
     # 使用urlencode方法转换标准格式
     data = urllib.parse.urlencode(Form_Data).encode('utf-8')
     # 传递Request对象和转换完格式的数据
-    response = urllib.request.urlopen(url, data)
+    # headers不能通过urllib.request.urlopen()发送，只能通过urllib.request.Request()发送
+    req = urllib.request.Request(url, data, head)
+    response = urllib.request.urlopen(req)
     # 读取信息并解码
     html = response.read().decode('utf-8')
     # 将已编码的 JSON 字符串解码为 Python 对象
