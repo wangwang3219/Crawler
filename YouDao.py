@@ -1,4 +1,5 @@
 import json
+import time
 import urllib.parse
 import urllib.request
 
@@ -36,6 +37,8 @@ def trans():
     target = html['translateResult'][0][0]['tgt']
     # 打印翻译信息
     print("翻译结果：%s" % target)
+    # 延迟5秒提交
+    time.sleep(5)
 
 trans()
 while(1):
