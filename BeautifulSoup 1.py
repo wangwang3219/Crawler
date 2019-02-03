@@ -1,9 +1,11 @@
 import urllib.request
+import urllib.parse
 import re
 from bs4 import BeautifulSoup
 
 def main():
-    url = "http://baike.baidu.com/view/284853.htm"
+    word = urllib.parse.quote("网络爬虫")
+    url = "https://baike.baidu.com/item/%s"%word
     response = urllib.request.urlopen(url)
     html = response.read()
     soup = BeautifulSoup(html, "lxml")
