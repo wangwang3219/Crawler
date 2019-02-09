@@ -69,7 +69,8 @@ class download(object):
     Returns:
         soup_text - 章节内容(string)
     Modify:
-        2017-05-06
+        2019-02-09
+
     """
 
     def Downloader(self, url):
@@ -90,7 +91,8 @@ class download(object):
     Returns:
         无
     Modify:
-        2017-05-06
+        2019-02-09
+
     """
 
     def Writer(self, name, path, text):
